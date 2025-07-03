@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agregar comillas y comas</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      color: #333;
+    }
+
+    h2 {
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 180px;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+      resize: vertical;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    h3 {
+      margin-top: 30px;
+      color: #2c3e50;
+    }
+
+    #output {
+      white-space: pre-wrap;
+      background: #ffffff;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📝 Formateador de Datos SQL</h2>
+  <p>Ingresa tus datos (uno por línea, separados por espacio o coma):</p>
+
+  <textarea id="input" placeholder="Ej: 1234567890&#10;0987654321"></textarea>
+  <button onclick="formatear()">✨ Formatear</button>
+
+  <h3>Resultado:</h3>
+  <textarea id="output" readonly placeholder="Aquí verás tus datos formateados..."></textarea>
+
+  <script>
+    function formatear() {
+      let datos = document.getElementById("input").value;
+      let separados = datos.split(/\s+|,|\n/).filter(x => x.trim() !== '');
+      let formateados = separados.map(d => `'${d.trim()}'`);
+      document.getElementById("output").value = formateados.join(", ");
+    }
+  </script>
+
+</body>
+</html>
